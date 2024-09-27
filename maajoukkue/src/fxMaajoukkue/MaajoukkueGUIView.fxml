@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.ComboBoxChooser?>
+<?import fi.jyu.mit.fxgui.ListChooser?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxMaajoukkue.MaajoukkueGUIController">
+   <bottom>
+      <BorderPane BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <left>
+            <HBox spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="handleLisaa" onAction="#handleLisaa" text="_Lisää Hiihtäjä" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <tooltip>
+                        <Tooltip text="Uuden hiihtäjän lisääminen joukkueeseen" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="handlePoista" onAction="#handlePoista" text="_Poista Hiihtäjä" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <tooltip>
+                        <Tooltip text="Olemassa olevan hiihtäjän poistaminen joukkueesta" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="handleMuokkaa" onAction="#handleMuokkaa" text="_Muokkaa tietoja" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <tooltip>
+                        <Tooltip text="Olemassa olevan hiihtäjän tietojen muokkaaminen" />
+                     </tooltip>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleSeura" text="Seura" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </HBox>
+         </left>
+         <right>
+            <Button fx:id="handleTallenna" mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna muutokset" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </Button>
+         </right>
+      </BorderPane>
+   </bottom>
+   <left>
+      <BorderPane BorderPane.alignment="CENTER">
+         <top>
+            <SplitPane BorderPane.alignment="CENTER">
+               <items>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label text="Jäsenet" HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                        <ComboBoxChooser fx:id="cbKentat" onAction="#handleHaku" rivit="">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ComboBoxChooser>
+                     </children>
+                  </HBox>
+               </items>
+            </SplitPane>
+         </top>
+         <center>
+            <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+               <content>
+                  <ListChooser fx:id="chooserHiihtajat" prefWidth="200.0" rivit="Iivo Niskanen&#10;Perttu Hyvärinen&#10;Ristomatti Hakola&#10;Niko Anttola&#10;Remi Lindholm&#10;Joni Mäki&#10;Kerttu Niskanen&#10;Krista Pärmäkoski&#10;Johanna Matintalo&#10;Jasmi Joensuu&#10;Anne Kyllönen&#10;Lauri Vuorinen" />
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </left>
+   <center>
+      <VBox>
+         <children>
+            <GridPane hgap="10.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" />
+                <ColumnConstraints hgrow="ALWAYS" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints vgrow="ALWAYS" />
+                <RowConstraints vgrow="ALWAYS" />
+                <RowConstraints vgrow="ALWAYS" />
+                  <RowConstraints vgrow="ALWAYS" />
+                  <RowConstraints vgrow="ALWAYS" />
+                  <RowConstraints vgrow="ALWAYS" />
+                  <RowConstraints vgrow="ALWAYS" />
+                  <RowConstraints vgrow="ALWAYS" />
+                  <RowConstraints vgrow="ALWAYS" />
+              </rowConstraints>
+               <children>
+                  <Label text="Nimi" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <Label text="Ikä" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                  <Label text="Seura" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                  <Label text="Kultamitalit" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                  <Label text="Hopeamitalit" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" />
+                  <Label text="Pronssimitalit" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS" />
+                  <Label text="Maailmancup-voitot" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS" />
+                  <Label text="Palkintokorokkeet" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.vgrow="ALWAYS" />
+                  <TextField fx:id="editNimi" GridPane.columnIndex="1" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="editIka" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="editSeura" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="editKulta" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="editHopea" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="editPronssi" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="editMc1" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="editTop3" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="2.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
+         <left>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="Tiedosto">
+                  <items>
+                        <MenuItem fx:id="handleAvaa" mnemonicParsing="false" onAction="#handleAvaa" text="Avaa">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem fx:id="handleTallenna" mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                    <MenuItem fx:id="handleSulje" mnemonicParsing="false" onAction="#handleSulje" text="Sulje">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Muokkaa">
+                  <items>
+                    <MenuItem fx:id="handleLisaa" mnemonicParsing="false" onAction="#handleLisaa" text="Lisää uusi  hiihtäjä" />
+                        <MenuItem fx:id="handlePoista" mnemonicParsing="false" onAction="#handlePoista" text="Poista hiihtäjä" />
+                        <MenuItem fx:id="handleMuokkaa" mnemonicParsing="false" onAction="#handleMuokkaa" text="Muokkaa tietoja" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleSeura" text="Seura" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Apua">
+                  <items>
+                    <MenuItem fx:id="handleTietoja" mnemonicParsing="false" onAction="#handleTietoja" text="Tietoja" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </left>
+         <right>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints fillWidth="false" halignment="RIGHT" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Haku" GridPane.halignment="RIGHT">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField fx:id="textHaku" onKeyReleased="#handleHaku" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+            </GridPane>
+         </right>
+      </BorderPane>
+   </top>
+   <right>
+      <BorderPane BorderPane.alignment="CENTER">
+         <top>
+            <Label text="Kertomus" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <center>
+            <TextArea fx:id="editKertomus" wrapText="true" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </right>
+</BorderPane>
